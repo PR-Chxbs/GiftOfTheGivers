@@ -4,14 +4,12 @@ WORKDIR /app
 
 # Copy the csproj files for main app and tests
 COPY GiftOfTheGivers.csproj ./GiftOfTheGivers/
-COPY ../GiftOfTheGivers.Tests/GiftOfTheGivers.Tests.csproj ../GiftOfTheGivers.Tests/
 
 # Restore dependencies
 RUN dotnet restore GiftOfTheGivers/GiftOfTheGivers.csproj
 
 # Copy everything else
 COPY . ./GiftOfTheGivers/
-COPY ../GiftOfTheGivers.Tests ../GiftOfTheGivers.Tests
 
 # Build and publish
 WORKDIR /app/GiftOfTheGivers
