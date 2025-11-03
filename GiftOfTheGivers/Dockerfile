@@ -1,18 +1,24 @@
 # Use official .NET SDK for build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
-# Copy csproj and restore dependencies
-COPY GiftOfTheGivers/*.csproj ./GiftOfTheGivers/
-RUN dotnet restore GiftOfTheGivers/*.csproj
+# Copy the csproj files for main app and tests
+COPY GiftOfTheGivers.csproj ./GiftOfTheGivers/
+COPY ../GiftOfTheGivers.Tests/GiftOfTheGivers.Tests.csproj ../GiftOfTheGivers.Tests/
 
-# Copy everything else and build
-COPY GiftOfTheGivers/. ./GiftOfTheGivers/
+# Restore dependencies
+RUN dotnet restore GiftOfTheGivers/GiftOfTheGivers.csproj
+
+# Copy everything else
+COPY . ./GiftOfTheGivers/
+COPY ../GiftOfTheGivers.Tests ../GiftOfTheGivers.Tests
+
+# Build and publish
 WORKDIR /app/GiftOfTheGivers
 RUN dotnet publish -c Release -o out
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# Runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/GiftOfTheGivers/out ./
 EXPOSE 80
