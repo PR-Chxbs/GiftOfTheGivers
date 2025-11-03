@@ -30,7 +30,7 @@ jobs:
 
       # Step 5: Build Docker image
       - name: Build Docker image
-        run: docker build -t gift-of-the-givers:latest ./Dockerfile
+        run: docker build -t gift-of-the-givers:latest ./GiftOfTheGivers
 
       # Step 6: Login to Render Docker registry
       - name: Render Docker Login
