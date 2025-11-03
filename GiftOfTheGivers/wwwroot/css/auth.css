@@ -1,0 +1,77 @@
+body {
+    background-color: var(--primary-clr);
+}
+
+.background-image {
+    position: absolute;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+main.auth {
+    display: flex;
+    height: 100vh;
+    justify-content: right;
+    padding: 50px;
+    color: white;
+    align-items: center;
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+
+        .logo {
+            width: 80px;
+            margin-bottom: 60px;
+        }
+    }
+
+    label {
+        margin-bottom: 4px;
+    }
+
+    .register {
+        .image-container {
+            .logo {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 460px;
+        margin-top: 60px;
+    
+        input, button {
+            padding: 16px;
+            background-color: var(--primary-variant-clr);
+            border: solid 1px #497A5E;
+            border-radius: 4px;
+            color: #E6E6E6;
+        }
+
+        input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="email"]::placeholder {
+            color: #E6E6E6;
+        }
+
+        button {
+            background-color: var(--secondary-clr);
+            border: none;
+            margin-top: 30px;
+            color: black;
+        }
+
+        input {
+            margin-bottom: 20px;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}

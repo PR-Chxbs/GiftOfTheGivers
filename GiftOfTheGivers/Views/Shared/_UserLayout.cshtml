@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GiftOfTheGivers</title>
+    <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GiftOfTheGivers.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="side-nav" role="navigation">
+        <div class="top-nav-section">
+            <img src="/resources/images/gift_of_the_givers_logo.png" alt="Gift of the givers logo" class="logo" />
+            <ul class="main-nav-items">
+                <li>
+                    <a asp-action="Index" class="nav-item">
+                        <img src="/resources/icons/home_nav_icon.png" alt="Home Icon" />
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="Events" class="nav-item">
+                        <img src="/resources/icons/events_nav_icon.png" alt="Events Icon" />
+                        <p>Events</p>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateDonation" class="nav-item">
+                        <img src="/resources/icons/resources_nav_icon.png" alt="Donations Icon" />
+                        <p>Donations</p>
+                    </a>
+                </li>
+                <li>
+                    <a asp-action="CreateResource" class="nav-item">
+                        <img src="/resources/icons/resources_nav_icon.png" alt="Resources Icon" />
+                        <p>Resources</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a asp-action="Settings" class="nav-item">
+            <img src="/resources/icons/settings_nav_icon.png" alt="Settings Icon" />
+            <p>Settings</p>
+        </a>
+    </nav>
+
+    <main role="main" class="main-content">
+        @RenderBody()
+    </main>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

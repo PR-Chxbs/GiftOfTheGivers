@@ -1,0 +1,25 @@
+﻿@model GiftOfTheGivers.Models.Assignment
+
+@{
+    ViewData["Title"] = "Edit Assignment";
+}
+
+<h1>Edit Assignment</h1>
+
+<form asp-action="EditAssignment" method="post">
+    <input type="hidden" asp-for="AssignmentID" />
+    <label>User</label>
+    <select asp-for="UserID" asp-items="@(new SelectList(ViewBag.Users, "Id", "Name"))">
+        <option value="">-- Select User --</option>
+    </select>
+
+    <label>Event</label>
+    <select asp-for="EventID" asp-items="@(new SelectList(ViewBag.Events, "EventID", "Name"))">
+        <option value="">-- Select Event --</option>
+    </select>
+
+    <label>Role In Project</label>
+    <input asp-for="RoleInProject" />
+
+    <button type="submit">Save changes</button>
+</form>

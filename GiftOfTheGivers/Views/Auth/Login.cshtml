@@ -1,0 +1,30 @@
+﻿﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@model GiftOfTheGivers.ViewModels.LoginViewModel
+
+<div class="form-container">
+    <div class="image-container">
+        <img src="/resources/images/gift_of_the_givers_logo.png" alt="Gift of the givers logo" class="logo" />
+    </div>
+
+    <h1>Welcome back!</h1>
+    <p>Are you a new user? <a asp-action="Register"><span class="underline">Register here</span></a></p>
+
+    <form asp-action="Login">
+        <label for="Email">Email</label>
+        <input type="text" placeholder="Enter email" required asp-for="Email" name="Email" />
+
+        <label for="Password">Password</label>
+        <input type="password" placeholder="Enter password" required asp-for="Password" name="Password" />
+
+        <div>
+            <input type="checkbox" asp-for="RememberMe" name="RememberMe" value="true" />
+            <label for="RememberMe">Remember Me</label>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+    <a><p class="underline">Forgot password?</p></a>
+</div>

@@ -1,0 +1,31 @@
+﻿@model GiftOfTheGivers.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>Edit User</h1>
+
+<form asp-action="EditUser" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label>Name</label>
+    <input asp-for="Name" placeholder="Enter name" />
+    <span asp-validation-for="Name"></span>
+
+    <label>Email</label>
+    <input asp-for="Email" type="email" placeholder="Enter email" />
+    <span asp-validation-for="Email"></span>
+
+    <label>Role</label>
+    <select asp-for="Role" asp-items="@(new SelectList(ViewBag.Roles))">
+        <option value="">-- Select Role --</option>
+    </select>
+    <span asp-validation-for="Role"></span>
+
+    <button type="submit">Save changes</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

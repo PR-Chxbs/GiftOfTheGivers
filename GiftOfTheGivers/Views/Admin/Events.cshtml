@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Events</h1>
+
+<div class="table-actions-container">
+    <a asp-action="CreateEvent" class="btn">
+        <img src="/resources/icons/plus_icon.png" />
+        <p>Add Event</p>
+    </a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Name</td>
+                <td>@e.Location</td>
+                <td>@e.StartDate.ToShortDateString()</td>
+                <td>@e.EndDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="EditEvent" asp-route-id="@e.EventID" class="btn btn-primary">Edit</a>
+                    <a asp-action="DeleteEvent" asp-route-id="@e.EventID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

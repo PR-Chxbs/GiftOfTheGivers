@@ -1,0 +1,45 @@
+name: CI/CD to Render
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Setup .NET
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      # Step 3: Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore GiftOfTheGivers/GiftOfTheGivers.csproj
+
+      # Step 4: Run tests
+      - name: Run unit tests
+        run: dotnet test GiftOfTheGivers.Tests/GiftOfTheGivers.Tests.csproj --no-restore --verbosity normal
+
+      # Step 5: Build Docker image
+      - name: Build Docker image
+        run: docker build -t gift-of-the-givers:latest ./GiftOfTheGivers
+
+      # Step 6: Login to Render Docker registry
+      - name: Render Docker Login
+        env:
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          echo $RENDER_API_KEY | docker login registry.render.com -u $RENDER_SERVICE_ID --password-stdin
+
+      # Step 7: Push Docker image to Render
+      - name: Push Docker image to Render
+        run: docker tag gift-of-the-givers:latest registry.render.com/$RENDER_SERVICE_ID/web:latest && docker push registry.render.com/$RENDER_SERVICE_ID/web:latest

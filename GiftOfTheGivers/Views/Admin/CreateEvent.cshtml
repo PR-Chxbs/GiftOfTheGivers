@@ -1,0 +1,31 @@
+﻿@model GiftOfTheGivers.Models.Event
+
+@{
+    ViewData["Title"] = "Create Event";
+}
+
+<h1>Create Event</h1>
+
+<form asp-action="CreateEvent" method="post">
+    <label>Name</label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+
+    <label>Location</label>
+    <input asp-for="Location" />
+    <span asp-validation-for="Location"></span>
+
+    <label>Start Date</label>
+    <input asp-for="StartDate" type="date" value="@Model?.StartDate.ToString("yyyy-MM-dd")" />
+    <span asp-validation-for="StartDate"></span>
+
+    <label>End Date</label>
+    <input asp-for="EndDate" type="date" value="@Model?.EndDate.ToString("yyyy-MM-dd")" />
+    <span asp-validation-for="EndDate"></span>
+
+    <label>Description</label>
+    <textarea asp-for="Description"></textarea>
+    <span asp-validation-for="Description"></span>
+
+    <button type="submit">Create</button>
+</form>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.Assignment>
+
+@{
+    ViewData["Title"] = "Assignments";
+}
+
+<h1>Assignments</h1>
+
+<div class="table-actions-container">
+    <a asp-action="CreateAssignment" class="btn">
+        <img src="/resources/icons/plus_icon.png" />
+        <p>Create an assignment</p>
+    </a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Event</th>
+            <th>Role In Project</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <td>@assignment.User?.Name</td>
+                <td>@assignment.Event?.Name</td>
+                <td>@assignment.RoleInProject</td>
+                <td>
+                    <a asp-action="EditAssignment" asp-route-id="@assignment.AssignmentID" class="btn btn-primary">Edit</a>
+                    <a asp-action="DeleteAssignment" asp-route-id="@assignment.AssignmentID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

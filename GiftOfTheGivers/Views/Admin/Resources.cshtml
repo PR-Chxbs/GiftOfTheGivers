@@ -1,0 +1,41 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.Resource>
+
+@{
+    ViewData["Title"] = "Resources";
+}
+
+<h1>Resources</h1>
+
+<div class="table-actions-container">
+    <a asp-action="CreateResource" class="btn">
+        <img src="/resources/icons/plus_icon.png" />
+        <p>Create Resource</p>
+    </a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Event</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var resource in Model)
+        {
+            <tr>
+                <td>@resource.Name</td>
+                <td>@resource.Quantity</td>
+                <td>@resource.Unit</td>
+                <td>@resource.Event?.Name</td>
+                <td>
+                    <a asp-action="EditResource" asp-route-id="@resource.ResourceID" class="btn btn-primary">Edit</a>
+                    <a asp-action="DeleteResource" asp-route-id="@resource.ResourceID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

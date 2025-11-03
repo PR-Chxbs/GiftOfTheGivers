@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h1>Reported Events</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ev in Model)
+        {
+            <tr>
+                <td>@ev.Name</td>
+                <td>@ev.Location</td>
+                <td>@ev.StartDate.ToShortDateString()</td>
+                <td>@ev.EndDate.ToShortDateString()</td>
+                <td>@ev.Description</td>
+                <td>
+                    <a asp-action="CreateDonation" asp-route-eventId="@ev.EventID">Report Donation</a> |
+                    <a asp-action="CreateResource" asp-route-eventId="@ev.EventID">Report Resource</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

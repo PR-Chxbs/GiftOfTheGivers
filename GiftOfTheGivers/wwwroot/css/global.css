@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-clr: #29553C;
+    --primary-variant-clr: #326749;
+    --primary-variant-2-clr: #497A5E;
+    --secondary-clr: #D8D66E;
+}
+
+/* Style reset */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Inter, Roboto, sans-serif;
+}
+
+input:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  background-color: var(--primary-variant-clr) !important;
+  color: white;
+}
+
+body {
+    font-family: Inter, Roboto, sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+
+    img {
+        align-self: center;
+    }
+}
+
+/* Generic table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    font-family: Inter, Roboto;
+    background-color: #fff;
+    border: 1px solid #e5e7eb; /* light gray border */
+    border-radius: 6px;
+    overflow: hidden;
+
+    /* Base button style */
+    .btn {
+        display: inline-block;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border-radius: 4px;
+        text-decoration: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* Primary button */
+    .btn-primary {
+        background-color: #2563eb; /* blue */
+        color: #fff;
+        border-color: #2563eb;
+    }
+    .btn-primary:hover {
+        background-color: #1e40af; /* darker blue */
+        border-color: #1e40af;
+    }
+
+    /* Secondary button */
+    .btn-secondary {
+        background-color: #6b7280; /* gray */
+        color: #fff;
+        border-color: #6b7280;
+    }
+    .btn-secondary:hover {
+        background-color: #4b5563;
+        border-color: #4b5563;
+    }
+
+    /* Danger button */
+    .btn-danger {
+        background-color: #dc2626; /* red */
+        color: #fff;
+        border-color: #dc2626;
+    }
+    .btn-danger:hover {
+        background-color: #991b1b;
+        border-color: #991b1b;
+    }
+
+}
+
+/* Table headers */
+table thead {
+    background-color: #f9fafb; /* very light gray */
+    text-align: left;
+}
+
+table th {
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: #374151; /* dark gray */
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Table body */
+table td {
+    padding: 0.75rem 1rem;
+    color: #4b5563; /* medium gray */
+    text-align: left; /* ✅ aligns all text left */
+    border-bottom: 1px solid #f3f4f6; /* subtle divider */
+}
+
+/* Zebra striping */
+table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* Hover effect */
+table tbody tr:hover {
+    background-color: #f3f4f6;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+input, button, select {
+    padding: 16px;
+    border-radius: 4px;
+}
+
+input {
+    border: solid 1px #E6E6E6;
+}
+
+button {
+    background-color: var(--primary-clr);
+    color: white;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}

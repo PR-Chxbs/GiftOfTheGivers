@@ -1,0 +1,25 @@
+﻿@model GiftOfTheGivers.Models.Donation
+
+@{
+    ViewData["Title"] = "Report Donation";
+}
+
+<h1>Report Donation</h1>
+
+<form asp-action="CreateDonation" method="post">
+    <label>Event</label>
+    <select asp-for="EventID" asp-items="@(new SelectList(ViewBag.Events, "EventID", "Name"))">
+        <option value="">-- Select Event --</option>
+    </select>
+    <span asp-validation-for="EventID"></span>
+
+    <label>Amount</label>
+    <input asp-for="Amount" type="number" step="0.01" />
+    <span asp-validation-for="Amount"></span>
+
+    <label>Donor Name</label>
+    <input asp-for="DonorName" />
+    <span asp-validation-for="DonorName"></span>
+
+    <button type="submit">Submit Donation</button>
+</form>

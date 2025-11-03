@@ -1,0 +1,27 @@
+﻿@model GiftOfTheGivers.Models.Resource
+
+@{
+    ViewData["Title"] = "Edit Resource";
+}
+
+<h1>Edit Resource</h1>
+
+<form asp-action="EditResource" method="post">
+    <input type="hidden" asp-for="ResourceID" />
+
+    <label>Name</label>
+    <input asp-for="Name" />
+
+    <label>Quantity</label>
+    <input asp-for="Quantity" type="number" />
+
+    <label>Unit</label>
+    <input asp-for="Unit" />
+
+    <label>Event</label>
+    <select asp-for="EventID" asp-items="@(new SelectList(ViewBag.Events, "EventID", "Name"))">
+        <option value="">-- Select Event --</option>
+    </select>
+
+    <button type="submit">Save changes</button>
+</form>

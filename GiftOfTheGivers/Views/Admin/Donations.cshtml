@@ -1,0 +1,43 @@
+﻿@model IEnumerable<GiftOfTheGivers.Models.Donation>
+
+@{
+    ViewData["Title"] = "Donations";
+}
+
+<h1>Donations</h1>
+
+<div class="table-actions-container">
+    <a asp-action="CreateDonation" class="btn">
+        <img src="/resources/icons/plus_icon.png" />
+        <p>Add Donation</p>
+    </a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Donor Name</th>
+            <th>Amount</th>
+            <th>Item Description</th>
+            <th>Date Received</th>
+            <th>Event</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var donation in Model)
+        {
+            <tr>
+                <td>@donation.DonorName</td>
+                <td>@(donation.Amount.HasValue? donation.Amount.Value.ToString("C") : "-")</td>
+                <td>@donation.ItemDescription</td>
+                <td>@donation.DateReceived.ToShortDateString()</td>
+                <td>@donation.Event?.Name</td>
+                <td>
+                    <a asp-action="EditDonation" asp-route-id="@donation.DonationID" class="btn btn-primary">Edit</a>
+                    <a asp-action="DeleteDonation" asp-route-id="@donation.DonationID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
