@@ -32,14 +32,14 @@ jobs:
       - name: Build Docker image
         run: docker build -t gift-of-the-givers:latest ./GiftOfTheGivers
 
-      # Step 6: Login to Render Docker registry
-      - name: Render Docker Login
-        env:
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-        run: |
-          echo $RENDER_API_KEY | docker login registry.render.com -u $RENDER_SERVICE_ID --password-stdin
-
-      # Step 7: Push Docker image to Render
-      - name: Push Docker image to Render
-        run: docker tag gift-of-the-givers:latest registry.render.com/$RENDER_SERVICE_ID/web:latest && docker push registry.render.com/$RENDER_SERVICE_ID/web:latest
+      # Step 6: Trigger Render deployment 
+      - name: Deploy to Render
+        env: 
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }} 
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }} 
+        run: | 
+          curl -X POST \ 
+            -H "Accept: application/json" \ 
+            -H "Authorization: Bearer $RENDER_API_KEY" \ 
+            -H "Content-Type: application/json" \ 
+            https://api.render.com/deploy/srv-$RENDER_SERVICE_ID
