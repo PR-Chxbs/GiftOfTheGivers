@@ -3,7 +3,7 @@ name: CI/CD to Render
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-test-deploy:
